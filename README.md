@@ -1,4 +1,4 @@
-<h3 align="denter">AI-Life_Planner</h3>
+<h2 align="center">AI-Life_Planner</h3>
 
 ----------------------------------------
 
