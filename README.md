@@ -1,4 +1,5 @@
-# AI-Life_Planner
+<h3 align="denter">AI-Life_Planner</h3>
+==================================================================================================================
 
 <h5>Production Demo:</h5>    https://ai-life-planner-bolthack.netlify.app/
 
