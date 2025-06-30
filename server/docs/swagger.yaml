@@ -1,0 +1,1072 @@
+basePath: /
+definitions:
+  entities.AIChatResponse:
+    properties:
+      created_at:
+        type: string
+      message:
+        type: string
+      sender:
+        type: string
+      user_id:
+        type: string
+    type: object
+  entities.BodyData:
+    properties:
+      allergies:
+        items:
+          type: string
+        type: array
+      available_time:
+        type: string
+      busy_days:
+        items:
+          type: string
+        type: array
+      currency:
+        type: string
+      expenses:
+        type: number
+      fitness_level:
+        type: string
+      income:
+        type: number
+      long_term:
+        items:
+          type: string
+        type: array
+      medical_conditions:
+        description: |-
+          Fullname  string    `json:"full_name"`
+          Age      int    `json:"age"`
+          Weight   float32    `json:"weight"`
+          Height   float32    `json:"height"`
+          Gender   string    `json:"gender"`
+        items:
+          type: string
+        type: array
+      medications:
+        items:
+          type: string
+        type: array
+      preferred_times:
+        items:
+          type: string
+        type: array
+      priorities:
+        items:
+          type: string
+        type: array
+      risk_tolerance:
+        type: string
+      savings_goal:
+        type: number
+      short_term:
+        items:
+          type: string
+        type: array
+      sleep_pattern:
+        type: string
+      timeframe:
+        type: string
+      user_id:
+        type: string
+      work_hours:
+        type: string
+    type: object
+  entities.FinanceRespond:
+    properties:
+      created_at:
+        type: string
+      currency:
+        type: string
+      expenses:
+        type: number
+      income:
+        type: number
+      risk_tolerance:
+        type: string
+      savings_goal:
+        type: number
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  entities.HabitResponse:
+    properties:
+      category:
+        type: string
+      completed_dates:
+        items:
+          type: string
+        type: array
+      created_at:
+        type: string
+      current_streak:
+        type: integer
+      description:
+        type: string
+      frequency:
+        type: string
+      name:
+        type: string
+      target_count:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  entities.HealthBackgroundResponse:
+    properties:
+      allergies:
+        items:
+          type: string
+        type: array
+      created_at:
+        type: string
+      fitness_level:
+        type: string
+      medical_conditions:
+        items:
+          type: string
+        type: array
+      medications:
+        items:
+          type: string
+        type: array
+      sleep_pattern:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  entities.LifeGoalBody:
+    properties:
+      long_term:
+        items:
+          type: string
+        type: array
+      priorities:
+        items:
+          type: string
+        type: array
+      short_term:
+        items:
+          type: string
+        type: array
+      timeframe:
+        type: string
+    type: object
+  entities.LifeGoalUpdateBody:
+    properties:
+      long_term:
+        items:
+          type: string
+        type: array
+      priorities:
+        items:
+          type: string
+        type: array
+      short_term:
+        items:
+          type: string
+        type: array
+      timeframe:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  entities.MoodResponse:
+    properties:
+      created_at:
+        type: string
+      mood:
+        type: string
+      note:
+        type: string
+      user_id:
+        type: string
+    type: object
+  entities.ResponseModel:
+    properties:
+      data: {}
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  entities.ScheduleResponse:
+    properties:
+      available_time:
+        type: string
+      busy_days:
+        items:
+          type: string
+        type: array
+      created_at:
+        type: string
+      preferred_times:
+        items:
+          type: string
+        type: array
+      updated_at:
+        type: string
+      user_id:
+        type: string
+      work_hours:
+        type: string
+    type: object
+  entities.UserProfileResponse:
+    properties:
+      age:
+        type: integer
+      created_at:
+        type: string
+      full_name:
+        type: string
+      gender:
+        type: string
+      height:
+        type: number
+      updated_at:
+        type: string
+      user_id:
+        type: string
+      weight:
+        type: number
+    type: object
+host: humorous-colt-vital.ngrok-free.app
+info:
+  contact: {}
+  description: This is Ai-lifeplanner API
+  title: Fiber API AudioSum
+  version: "1.0"
+paths:
+  /api/v1/ai_gen/ai_gen/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get Gennerated plan that generate by ai base on ai prompt that
+        we create from base user input
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get AI gennerated plan
+      tags:
+      - Ai Gen
+  /api/v1/ai_gen/chat/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete all history AI Chat By userID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Delete AI Chat By userID
+      tags:
+      - Ai Gen
+    get:
+      consumes:
+      - application/json
+      description: Get AI Chat history By userID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get AI Chat By userID
+      tags:
+      - Ai Gen
+    post:
+      consumes:
+      - application/json
+      description: Sent the new message to AI Chat Assistant
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: AI Chat Data
+        in: body
+        name: bodyHealthBackground
+        required: true
+        schema:
+          $ref: '#/definitions/entities.AIChatResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Sent a new message to AI Chat
+      tags:
+      - Ai Gen
+  /api/v1/ai_gen/create_ai_gen/{id}:
+    post:
+      consumes:
+      - application/json
+      description: generate a new AI GenPlan base ai prompt that we create base on
+        data that user input
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Create a new AI GenPlan
+      tags:
+      - Ai Gen
+  /api/v1/ai_gen/goal/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete AI goal that we generate from ai By ID of that goal
+      parameters:
+      - description: GeneratedPlan ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Delete AI GeneratedPlan By ID
+      tags:
+      - Ai Gen
+  /api/v1/lifegoals/add_lifegoal/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Create a new life goal for a user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Life Goal Data
+        in: body
+        name: bodyLifeGoal
+        required: true
+        schema:
+          $ref: '#/definitions/entities.LifeGoalBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Create a new life goal
+      tags:
+      - Life Goal
+  /api/v1/lifegoals/lifegoal/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get life goals by ID
+      parameters:
+      - description: Life Goal ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get life goals by ID
+      tags:
+      - Life Goal
+  /api/v1/lifegoals/lifegoals:
+    get:
+      consumes:
+      - application/json
+      description: Get all life goals for a user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get all life goals
+      tags:
+      - Life Goal
+  /api/v1/lifegoals/update_lifegoal/{id}:
+    patch:
+      consumes:
+      - application/json
+      description: Update life goal by ID
+      parameters:
+      - description: Life Goal ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Life Goal Data
+        in: body
+        name: bodyLifeGoal
+        required: true
+        schema:
+          $ref: '#/definitions/entities.LifeGoalUpdateBody'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Update life goal
+      tags:
+      - Life Goal
+  /api/v1/lifegoals/users/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get life goals by User ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get life goals by User ID
+      tags:
+      - Life Goal
+  /api/v1/users/add_user/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Insert all user data
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User Profile Data
+        in: body
+        name: bodyUserProfile
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UserProfileResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Insert Userdata
+      tags:
+      - User
+  /api/v1/users/finance_info:
+    get:
+      consumes:
+      - application/json
+      description: Get finance records of all user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get All user finance records
+      tags:
+      - Finance
+  /api/v1/users/finance_info/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get finance records by User ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get finance records by User ID
+      tags:
+      - Finance
+    post:
+      consumes:
+      - application/json
+      description: create new finance records by User ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Finance Data
+        in: body
+        name: bodyFinance
+        required: true
+        schema:
+          $ref: '#/definitions/entities.FinanceRespond'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: create new finance records by User ID
+      tags:
+      - Finance
+  /api/v1/users/habit/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Habits by user ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get Habit by UserId
+      tags:
+      - Habits
+    post:
+      consumes:
+      - application/json
+      description: Create a new Habits For User
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Habit Data
+        in: body
+        name: bodyHealthBackground
+        required: true
+        schema:
+          $ref: '#/definitions/entities.HabitResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Create a new Habit
+      tags:
+      - Habits
+  /api/v1/users/health_background:
+    get:
+      consumes:
+      - application/json
+      description: Get all health background data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get All Health Background
+      tags:
+      - Health Background
+  /api/v1/users/health_background/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get health background by User ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get Health Background by User ID
+      tags:
+      - Health Background
+    post:
+      consumes:
+      - application/json
+      description: Create a new health background for a user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Health Background Data
+        in: body
+        name: bodyHealthBackground
+        required: true
+        schema:
+          $ref: '#/definitions/entities.HealthBackgroundResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Create a new health background
+      tags:
+      - Health Background
+  /api/v1/users/mood:
+    get:
+      consumes:
+      - application/json
+      description: Get all MoodData
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get all MoodData
+      tags:
+      - Mood
+  /api/v1/users/mood/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get MoodData by id
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get MoodData by id
+      tags:
+      - Mood
+    post:
+      consumes:
+      - application/json
+      description: Get MoodData by id
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Mood Data
+        in: body
+        name: bodyMood
+        required: true
+        schema:
+          $ref: '#/definitions/entities.MoodResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get MoodData by id
+      tags:
+      - Mood
+  /api/v1/users/schedule:
+    get:
+      consumes:
+      - application/json
+      description: Get all schedule
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get all schedule
+      tags:
+      - Schedule
+  /api/v1/users/schedule/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get schedule by ID
+      parameters:
+      - description: Scheadule ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get schedule by  ID
+      tags:
+      - Schedule
+    post:
+      consumes:
+      - application/json
+      description: Create a new schedule
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Shcedule Data
+        in: body
+        name: bodyUserProfile
+        required: true
+        schema:
+          $ref: '#/definitions/entities.ScheduleResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Create a new schedule
+      tags:
+      - Schedule
+  /api/v1/users/update_user/{id}:
+    patch:
+      consumes:
+      - application/json
+      description: Update user data
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User Profile Data
+        in: body
+        name: bodyUserProfile
+        required: true
+        schema:
+          $ref: '#/definitions/entities.UserProfileResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Update Userdata
+      tags:
+      - User
+  /api/v1/users/user/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete every data by user id except user_profile
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Delete Userdata by userID
+      tags:
+      - User
+    get:
+      consumes:
+      - application/json
+      description: Get user data by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get Userdata by ID
+      tags:
+      - User
+  /api/v1/users/user/add_alldata/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Insert all data
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: All Data
+        in: body
+        name: bodyUserProfile
+        required: true
+        schema:
+          $ref: '#/definitions/entities.BodyData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Insert Userdata
+      tags:
+      - User
+  /api/v1/users/user/schedule/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get schedule by User ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get schedule by User ID
+      tags:
+      - Schedule
+  /api/v1/users/users:
+    get:
+      consumes:
+      - application/json
+      description: Get all user data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/entities.ResponseModel'
+      summary: Get all Userdata
+      tags:
+      - User
+swagger: "2.0"

@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minimal custom scrollbar for chat area */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #e5e7eb #fff; /* light: neutral-200 on white */
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e5e7eb; /* neutral-200 */
+  border-radius: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #fff;
+}
+.dark .custom-scrollbar {
+  scrollbar-color: #374151 #262626; /* dark: neutral-700 on neutral-900 */
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #374151; /* neutral-700 */
+}
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: #262626;
+}
